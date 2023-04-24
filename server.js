@@ -3,7 +3,11 @@ const http = require("http");
 const cors = require("cors");
 const app = express();
 const { Server } = require("socket.io");
+const dotenv = require("dotenv");
 
+dotenv.config();
+
+const port = process.env.PORT || 5000;
 app.use(cors());
 const server = http.createServer(app);
 
@@ -22,4 +26,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(5000, () => console.log("server at 5000 port"));
+server.listen(port, () => console.log(`server listen at ${port}`));
