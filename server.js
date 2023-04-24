@@ -24,9 +24,11 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log(socket.id);
-  socket.on("test", (data) => {
-    console.log(data);
-    socket.broadcast.emit("response", data);
+  socket.on("location", (data) => {
+    socket.broadcast.emit("location", data);
+  });
+  socket.on("address", (data) => {
+    socket.broadcast.emit("address", data);
   });
 });
 
