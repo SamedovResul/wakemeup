@@ -11,6 +11,10 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 const server = http.createServer(app);
 
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
+
 const io = new Server(server, {
   cors: {
     origin: "*",
